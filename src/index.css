@@ -1,13 +1,50 @@
+@tailwind base;
+@tailwind components;
+
+@layer components {
+  .btn-gradient {
+    @apply rounded-md w-[140px] h-[48px] px-4 py-4 bg-gradient-to-r hover:bg-gradient-to-l from-[#19D3AE] to-[#0FCFEC] font-medium text-[14px] text-white;
+  }
+  .bg-gradient {
+    @apply bg-gradient-to-l hover:bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC];
+  }
+  .bg-mslate {
+    @apply bg-gradient-to-l hover:bg-gradient-to-r from-slate-800 to-slate-600;
+  }
+
+  .hero-bg {
+    background-image: url(../src/assets/images/bg.png);
+  }
+  .footer-bg {
+    background-image: url(../src/assets/images/footer.png);
+  }
+  .appointment-bg {
+    background-image: url(../src/assets/images/appointment.png);
+  }
+  
+  .hamburger div:first-child {
+    @apply rotate-45 translate-y-2;
+  }
+  .hamburger div:nth-child(2) {
+    @apply opacity-0;
+  }
+  .hamburger div:last-child {
+    @apply -rotate-45 -translate-y-1;
+  }
+}
+
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0 auto;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
