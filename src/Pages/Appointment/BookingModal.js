@@ -29,7 +29,7 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
       phone: event.target.phone.value,
     };
 
-    fetch("http://localhost:5000/booking", {
+    fetch(" https://doctor-server-ffph.onrender.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -60,26 +60,26 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
         <div className="modal-box">
           <label
             htmlFor="booking-modal"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
+            className="absolute btn btn-sm btn-circle right-2 top-2"
           >
             ✕
           </label>
-          <h3 className="font-bold text-lg text-secondary text-center mb-5">
+          <h3 className="mb-5 text-lg font-bold text-center text-secondary">
             Booking for: {name}
           </h3>
           <form
             onSubmit={handleBooking}
-            className="grid grid-cols-1 gap-3 justify-items-center mt-2"
+            className="grid grid-cols-1 gap-3 mt-2 justify-items-center"
           >
             <input
               type="text"
               disabled
               value={format(date, "PP")}
-              className="input input-bordered w-full max-w-xs"
+              className="w-full max-w-xs input input-bordered"
             />
             <select
               name="slot"
-              className="select select-bordered w-full max-w-xs"
+              className="w-full max-w-xs select select-bordered"
             >
               {slots.map((slot, index) => (
                 <option key={index} value={slot}>
@@ -92,25 +92,25 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
               name="name"
               disabled
               value={user?.displayName || ""}
-              className="input input-bordered w-full max-w-xs"
+              className="w-full max-w-xs input input-bordered"
             />
             <input
               type="email"
               name="email"
               disabled
               value={user?.email || ""}
-              className="input input-bordered w-full max-w-xs"
+              className="w-full max-w-xs input input-bordered"
             />
             <input
               type="text"
               name="phone"
               placeholder="Phone Number"
-              className="input input-bordered w-full max-w-xs"
+              className="w-full max-w-xs input input-bordered"
             />
             <input
               type="submit"
               value="Submit"
-              className="btn btn-secondary w-full max-w-xs"
+              className="w-full max-w-xs btn btn-secondary"
             />
           </form>
         </div>

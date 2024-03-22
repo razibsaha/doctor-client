@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 const useAdmin = user => {
     const [admin, setAdmin] = useState(false);
@@ -6,7 +6,7 @@ const useAdmin = user => {
     useEffect( () =>{
         const email = user?.email;
         if(email){
-            fetch(`http://localhost:5000/admin/${email}`, {
+            fetch(` https://doctor-server-ffph.onrender.com/admin/${email}`, {
                 method:'GET',
                 headers: {
                     'content-type': 'application/json',
