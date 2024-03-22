@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading/Loading';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch(' https://vast-waters-14263.herokuapp.com/service').then(res => res.json()))
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://doctor-server-ffph.onrender.com/service').then(res => res.json()))
 
     const imageStorageKey='c323997fa86aa80f13806af85bd42453';
 
@@ -39,7 +39,7 @@ const AddDoctor = () => {
                     img: img
                 }
                 // send to your database 
-                fetch(' https://vast-waters-14263.herokuapp.com/doctor', {
+                fetch('https://doctor-server-ffph.onrender.com/doctor', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -72,14 +72,14 @@ const AddDoctor = () => {
             <h2 className="text-2xl">Add a New Doctor</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="w-full max-w-xs form-control">
                     <label className="label">
                         <span className="label-text">Name</span>
                     </label>
                     <input
                         type="text"
                         placeholder="Your Name"
-                        className="input input-bordered w-full max-w-xs"
+                        className="w-full max-w-xs input input-bordered"
                         {...register("name", {
                             required: {
                                 value: true,
@@ -88,18 +88,18 @@ const AddDoctor = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.name?.type === 'required' && <span className="text-red-500 label-text-alt">{errors.name.message}</span>}
                     </label>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="w-full max-w-xs form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
                     <input
                         type="email"
                         placeholder="Your Email"
-                        className="input input-bordered w-full max-w-xs"
+                        className="w-full max-w-xs input input-bordered"
                         {...register("email", {
                             required: {
                                 value: true,
@@ -112,16 +112,16 @@ const AddDoctor = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                        {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                        {errors.email?.type === 'required' && <span className="text-red-500 label-text-alt">{errors.email.message}</span>}
+                        {errors.email?.type === 'pattern' && <span className="text-red-500 label-text-alt">{errors.email.message}</span>}
                     </label>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="w-full max-w-xs form-control">
                     <label className="label">
                         <span className="label-text">Specialty</span>
                     </label>
-                    <select {...register('specialty')} className="select input-bordered w-full max-w-xs">
+                    <select {...register('specialty')} className="w-full max-w-xs select input-bordered">
                         {
                             services.map(service => <option
                                 key={service._id}
@@ -131,18 +131,13 @@ const AddDoctor = () => {
                     </select>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="w-full max-w-xs form-control">
                     <label className="label">
                         <span className="label-text">Photo</span>
                     </label>
                     <input
                         type="file"
-                        className="block w-full text-sm text-slate-500
-                        file:mr-4 file:py-2 file:px-4
-                        file:rounded-full file:border-0
-                        file:text-sm file:font-bold
-                        file:bg-violet-50 file:text-violet-700
-                        hover:file:bg-violet-100"
+                        className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
                         {...register("image", {
                             required: {
                                 value: true,
@@ -151,11 +146,11 @@ const AddDoctor = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.name?.type === 'required' && <span className="text-red-500 label-text-alt">{errors.name.message}</span>}
                     </label>
                 </div>
 
-                <input className='btn w-full max-w-xs text-white' type="submit" value="Add" />
+                <input className='w-full max-w-xs text-white btn' type="submit" value="Add" />
             </form>
         </div>
     );

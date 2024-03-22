@@ -10,11 +10,11 @@ const AvailableAppointments = ({ date }) => {
   const formattedDate = format(date, 'PP');
 
   const { data: services, isLoading, refetch } = useQuery(['available', formattedDate], () => 
-  fetch(` https://vast-waters-14263.herokuapp.com/available?date=${formattedDate}`)
+  fetch(` https://doctor-server-ffph.onrender.com/available?date=${formattedDate}`)
         .then(res => res.json()))
 
   /* useEffect(() => {
-    fetch(` https://vast-waters-14263.herokuapp.com/available?date=${formattedDate}`)
+    fetch(`https://doctor-server-ffph.onrender.com//available?date=${formattedDate}`)
         .then(res => res.json())
         .then(data => setServices(data));
 }, []) */
@@ -23,14 +23,14 @@ if(isLoading){
 }
   return (
     <section>
-      <div className="md:flex flex-col justify-center items-center">
-        <h1 className="text-primary text-center">
+      <div className="flex-col items-center justify-center md:flex">
+        <h1 className="text-center text-primary">
           {" "}
           Available Services on : {format(date, "PP")}
         </h1>
-        <p className="text-slate-400 text-center">Please select a service</p>
+        <p className="text-center text-slate-400">Please select a service</p>
       </div>
-      <div className="container mx-auto px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="container grid grid-cols-1 gap-5 px-12 mx-auto md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <Service
             key={service._id}

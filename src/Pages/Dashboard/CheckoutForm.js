@@ -13,7 +13,7 @@ const CheckoutForm = ({ appointment }) => {
     const { _id, price, patient, patientName } = appointment;
 
     useEffect(() => {
-        fetch(' https://vast-waters-14263.herokuapp.com/create-payment-intent', {
+        fetch('https://doctor-server-ffph.onrender.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -80,7 +80,7 @@ const CheckoutForm = ({ appointment }) => {
                 appointment: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(` https://vast-waters-14263.herokuapp.com/booking/${_id}`, {
+            fetch(`https://doctor-server-ffph.onrender.com/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
@@ -114,7 +114,7 @@ const CheckoutForm = ({ appointment }) => {
                         },
                     }}
                 />
-                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret || success}>
+                <button className='mt-4 btn btn-success btn-sm' type="submit" disabled={!stripe || !clientSecret || success}>
                     Pay
                 </button>
             </form>
@@ -124,7 +124,7 @@ const CheckoutForm = ({ appointment }) => {
             {
                 success && <div className='text-green-500'>
                     <p>{success}  </p>
-                    <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
+                    <p>Your transaction Id: <span className="font-bold text-orange-500">{transactionId}</span> </p>
                 </div>
             }
         </>

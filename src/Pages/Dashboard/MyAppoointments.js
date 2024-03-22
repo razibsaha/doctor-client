@@ -12,7 +12,7 @@ const MyAppointments = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        ` https://vast-waters-14263.herokuapp.com/booking?patient=${user.email}`,
+        `https://doctor-server-ffph.onrender.com/booking?patient=${user.email}`,
         {
           method: "GET",
           headers: {
